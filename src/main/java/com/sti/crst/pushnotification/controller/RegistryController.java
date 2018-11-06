@@ -20,14 +20,20 @@ public class RegistryController {
 		this.fcmClient = fcmClient;
 	}
 
+	/*
+	 * @PostMapping("/register") public void register(@RequestBody Mono<String>
+	 * token) { token.subscribe(t -> this.fcmClient.subscribe("chuck", t)); }
+	 */
+
 	@PostMapping("/register")
-	public void register(@RequestBody Mono<String> token) {
-		token.subscribe(t -> this.fcmClient.subscribe("chuck", t));
+	public void register(@RequestBody String token) {
+		this.fcmClient.subscribe("chuck", token);
 	}
-	
-	/*@PostMapping("/register")
-	public void register(@RequestParam("token") Mono<String> token) {
-		token.subscribe(t -> this.fcmClient.subscribe("chuck", t));
-	}*/
+
+	/*
+	 * @PostMapping("/register") public void register(@RequestParam("token")
+	 * Mono<String> token) { token.subscribe(t -> this.fcmClient.subscribe("chuck",
+	 * t)); }
+	 */
 
 }
